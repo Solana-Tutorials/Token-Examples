@@ -1,0 +1,5 @@
+[alias]
+create_mint_account = "run --bin 1_create_mint_account"
+create_token_account = "run --bin 2_create_token_account"
+mint_tokens = "run --bin 3_mint_tokens"
+transfer_tokens = "run --bin 4_transfer_tokens" 
