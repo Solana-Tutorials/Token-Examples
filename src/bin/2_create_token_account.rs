@@ -2,9 +2,10 @@ use solana_client::rpc_client::RpcClient;
 use solana_sdk::{
     commitment_config::CommitmentConfig, signer::Signer, transaction::Transaction
 };
-use anyhow::Result;
-use token_examples::{get_or_create_keypair, print_explorer_link, request_and_confirm_airdrop, RPC_URL_LOCAL};
 use spl_associated_token_account::instruction::create_associated_token_account;
+
+use token_examples::{get_or_create_keypair, print_explorer_link, request_and_confirm_airdrop, RPC_URL_LOCAL};
+use anyhow::Result;
 
 fn main() -> Result<()> {
     let rpc_url = String::from(RPC_URL_LOCAL);
@@ -13,6 +14,10 @@ fn main() -> Result<()> {
     let wallet_1 = request_and_confirm_airdrop("WALLET_1", &client)?;
     let wallet_2 = get_or_create_keypair("WALLET_2")?;
     let mint = get_or_create_keypair("MINT")?;
+    println!("Wallet 1: {}", wallet_1.pubkey());
+    println!("Wallet 2: {}", wallet_2.pubkey());
+    println!("Mint: {}", mint.pubkey());
+
 
     // Instruction to create associated token account
     let wallet_1_create_associated_token_account_instruction = create_associated_token_account(
