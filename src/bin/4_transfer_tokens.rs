@@ -15,7 +15,7 @@ fn main() -> Result<()> {
     let wallet_2 = get_or_create_keypair("WALLET_2")?;
     let mint = get_or_create_keypair("MINT")?;
 
-    // Instruction to create associated token account
+
     let wallet_1_token_account = get_associated_token_address_with_program_id(
         &wallet_1.pubkey(), // Token account owner
         &mint.pubkey(),                // Mint
@@ -28,7 +28,7 @@ fn main() -> Result<()> {
         &spl_token_2022::id(),
     );  
 
-    // Instruction to mint tokens
+    // Instruction to transfer tokens
     let transfer_instruction = transfer_checked(
         &spl_token_2022::id(),
         &wallet_1_token_account,
